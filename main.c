@@ -14,22 +14,23 @@ void pasarPila (Pila *A, Pila *B);
 //3. Hacer una función que pase todos los elementos de una pila a otra, pero conservando el orden.
 void pasarPilaIgualOrden (Pila *A, Pila *B);
 //4. Hacer una función que encuentre el menor elemento de una pila y lo retorna. La misma debe eliminar ese dato de la pila.
-void eliminarMenor (Pila *A);
+int eliminarMenor (Pila *A);
 //5. Hacer una función que pase los elementos de una pila a otra, de manera que se genere una nueva pila ordenada. Usar la función del ejercicio 4. (Ordenamiento por selección)
-void ordenXseleccion (Pila *A);
-
+void ordenXseleccion (Pila* A,Pila* B);
+//6
 
 int main()
 {
     char seguir ='s';
-    int caso;
+    int caso,numMenor;
 
-    Pila a, b, aux,menor;
+    Pila a, b, aux,menor,ordenada;
 
     inicpila (&a);
     inicpila(&b);
     inicpila(&aux);
     inicpila(&menor);
+    inicpila(&ordenada);
 
 
 
@@ -93,10 +94,13 @@ int main()
             printf("esta es la pila 1");
             mostrar(&a);
 
-            eliminarMenor (&a);
+            numMenor=eliminarMenor (&a);
 
+            printf("numero eliminado:%d\n",numMenor);
             printf("pila 1 con el menor dato eliminado");
             mostrar(&a);
+
+
 
             break;
         case 5:
@@ -112,7 +116,9 @@ int main()
             printf("pila desordenada\n");
             mostrar(&a);
 
-
+            printf("nueva pila ordenada");
+           ordenXseleccion(&a,&ordenada);
+            mostrar(&ordenada);
 
             break;
         case 6:
@@ -201,64 +207,46 @@ void pasarPilaIgualOrden (Pila *A, Pila *B)
 }
 
 //4
-void eliminarMenor(Pila *A)
+int eliminarMenor(Pila *A)
 {
-
-    Pila aux, menor;
+    int menor;
+    Pila aux;
 
     inicpila(&aux);
-    inicpila(&menor);
 
-    apilar(&menor,desapilar(A));
+   menor=(desapilar(A));
 
     while(!pilavacia(A))
     {
-        if(tope(A)< tope(&menor))
+        if(tope(A)< menor)
         {
-            apilar(&aux,desapilar(&menor));
-            apilar(&menor,desapilar(A));
+            //no usar & dentro de funciones de no ser que sea una pila creada dentro de la funcion
+            apilar(&aux,menor);
+            menor=(desapilar(A));
         }
-        else
-        {
-            apilar(&aux,desapilar(A));
+        else {
+             apilar(&aux,desapilar(A));
         }
+
     }
 
     while(!pilavacia(&aux))
     {
         apilar(A,desapilar(&aux));
     }
-    mostrar(&menor);
+    return menor;
 }
 
 //5
-void ordenXseleccion (Pila *A)
+void ordenXseleccion (Pila* A,Pila* B)
 {
-    Pila aux,menor,ordenada;
-    inicpila(&aux);
-    inicpila(&menor);
-    inicpila(&ordenada);
-
-    apilar(&menor,desapilar(A));
-
     while(!pilavacia(A))
     {
-        if(tope(A)< tope(&menor)){
-            apilar(&aux,desapilar(&menor));
-            apilar(&menor,desapilar(A));
-        }
-        else{
-            apilar(&aux,desapilar(A));
-        }
+        //no usar & adentro de las funciones
+      apilar(B,eliminarMenor(A));
 
     }
-    apilar(&ordenada,desapilar(&menor));
-
-
-
-
-
-
-
-
 }
+
+
+
