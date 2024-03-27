@@ -17,12 +17,29 @@ void pasarPilaIgualOrden (Pila *A, Pila *B);
 int eliminarMenor (Pila *A);
 //5. Hacer una función que pase los elementos de una pila a otra, de manera que se genere una nueva pila ordenada. Usar la función del ejercicio 4. (Ordenamiento por selección)
 void ordenXseleccion (Pila* A,Pila* B);
-//6
+//6Hacer una función que inserta en una pila ordenada un nuevo elemento, conservando el orden de ésta.
+void insertarEnPilaOrdenada (Pila* A,int dato);
+//7. Hacer una función que pase los elementos de una pila a otra, de manera que se genere una nueva pila ordenada. Usar la función del ejercicio 6.  (Ordenamiento por inserción)
+
+//8. Hacer una función que sume los dos primeros elementos de una pila (tope y anterior), y retorne la suma,  sin alterar el contenido de la pila.
+
+//9. Hacer una función que calcule el promedio de los elementos de una pila, para ello hacer también una función que calcule la suma, otra para la cuenta y otra que divida. En total son cuatro funciones, y la función que calcula el promedio invoca a las otras 3.
+
+//10. Hacer una función que reciba una pila con números de un solo dígito (es responsabilidad de quien usa el programa) y que transforme esos dígitos en un número decimal. Por ejemplo, la pila: Debe retornar el número: 14675
+
+
+
+
+//Ejercicios extra: Con el fin de generar una experiencia de usuario diferente a la que otorga la librería se requiere desarrollar las siguientes funciones:
+//Realizar una función que cargue la pila sin utilizar la función leer.
+//Realizar una función que muestre la pila sin utilizar la función mostrar.
+
+
 
 int main()
 {
     char seguir ='s';
-    int caso,numMenor;
+    int caso,numMenor,numerito;
 
     Pila a, b, aux,menor,ordenada;
 
@@ -117,11 +134,24 @@ int main()
             mostrar(&a);
 
             printf("nueva pila ordenada");
-           ordenXseleccion(&a,&ordenada);
+            ordenXseleccion(&a,&ordenada);
             mostrar(&ordenada);
 
             break;
         case 6:
+            printf("Hacer una función que inserta en una pila ordenada un nuevo elemento, conservando el orden de ésta.\n");
+            numerito=5;
+            apilar(&a,7);
+            apilar(&a,6);
+            apilar(&a,4);
+            apilar(&a,3);
+            apilar(&a,2);
+            apilar(&a,1);
+
+
+            insertarEnPilaOrdenada(&a,numerito);
+            mostrar(&a);
+
             break;
         case 7:
             break;
@@ -214,7 +244,7 @@ int eliminarMenor(Pila *A)
 
     inicpila(&aux);
 
-   menor=(desapilar(A));
+    menor=(desapilar(A));
 
     while(!pilavacia(A))
     {
@@ -224,8 +254,9 @@ int eliminarMenor(Pila *A)
             apilar(&aux,menor);
             menor=(desapilar(A));
         }
-        else {
-             apilar(&aux,desapilar(A));
+        else
+        {
+            apilar(&aux,desapilar(A));
         }
 
     }
@@ -243,10 +274,44 @@ void ordenXseleccion (Pila* A,Pila* B)
     while(!pilavacia(A))
     {
         //no usar & adentro de las funciones
-      apilar(B,eliminarMenor(A));
+        apilar(B,eliminarMenor(A));
 
     }
 }
 
+//6
+void insertarEnPilaOrdenada (Pila* A,int dato)
+{
+    Pila aux;
+    inicpila(&aux);
 
+
+    if(tope(A)<dato)
+    {
+        while((!pilavacia(A))&&(tope(A)<dato))
+        {
+            apilar(&aux,desapilar(A));
+        }
+        apilar(A,dato);
+        while(!pilavacia(&aux))
+        {
+            apilar(A,desapilar(&aux));
+        }
+
+    }
+    else
+    {
+        while((!pilavacia(A))&&(tope(A)>dato))
+        {
+            apilar(&aux,desapilar(A));
+        }
+        apilar(A,dato);
+        while(!pilavacia(&aux))
+        {
+            apilar(A,desapilar(&aux));
+        }
+
+    }
+
+}
 
