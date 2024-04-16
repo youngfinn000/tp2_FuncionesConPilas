@@ -4,42 +4,42 @@
 
 //
 
-//1. Hacer una función que permita ingresar varios elementos a una pila, tanto como quiera el usuario.
+//1. Hacer una funciï¿½n que permita ingresar varios elementos a una pila, tanto como quiera el usuario.
 void cargarPilaxReferencia (Pila *pilita);
 Pila cargarPilaCopia (Pila pilita);
 
-//2. Hacer una función que pase todos los elementos de una pila a otra.
+//2. Hacer una funciï¿½n que pase todos los elementos de una pila a otra.
 void pasarPila (Pila *A, Pila *B);
 
-//3. Hacer una función que pase todos los elementos de una pila a otra, pero conservando el orden.
+//3. Hacer una funciï¿½n que pase todos los elementos de una pila a otra, pero conservando el orden.
 void pasarPilaIgualOrden (Pila *A, Pila *B);
 
-//4. Hacer una función que encuentre el menor elemento de una pila y lo retorna. La misma debe eliminar ese dato de la pila.
+//4. Hacer una funciï¿½n que encuentre el menor elemento de una pila y lo retorna. La misma debe eliminar ese dato de la pila.
 int eliminarMenor (Pila *A);
 
-//5. Hacer una función que pase los elementos de una pila a otra, de manera que se genere una nueva pila ordenada. Usar la función del ejercicio 4. (Ordenamiento por selección)
+//5. Hacer una funciï¿½n que pase los elementos de una pila a otra, de manera que se genere una nueva pila ordenada. Usar la funciï¿½n del ejercicio 4. (Ordenamiento por selecciï¿½n)
 void ordenXseleccion (Pila* A,Pila* B);
 
-//6Hacer una función que inserta en una pila ordenada un nuevo elemento, conservando el orden de ésta.
+//6Hacer una funciï¿½n que inserta en una pila ordenada un nuevo elemento, conservando el orden de ï¿½sta.
 void insertarEnPilaOrdenada (Pila* A,int dato);
 
-//7. Hacer una función que pase los elementos de una pila a otra, de manera que se genere una nueva pila ordenada. Usar la función del ejercicio 6.  (Ordenamiento por inserción)
+//7. Hacer una funciï¿½n que pase los elementos de una pila a otra, de manera que se genere una nueva pila ordenada. Usar la funciï¿½n del ejercicio 6.  (Ordenamiento por inserciï¿½n)
 void nuevaOrdenada (Pila* A);
 
-//8. Hacer una función que sume los dos primeros elementos de una pila (tope y anterior), y retorne la suma,  sin alterar el contenido de la pila.
+//8. Hacer una funciï¿½n que sume los dos primeros elementos de una pila (tope y anterior), y retorne la suma,  sin alterar el contenido de la pila.
 int sumaTopePostope (Pila A);
 
 
-//9. Hacer una función que calcule el promedio de los elementos de una pila,
-// para ello hacer también una función que calcule la suma, otra para la cuenta y otra que divida.
-// En total son cuatro funciones, y la función que calcula el promedio invoca a las otras 3.
+//9. Hacer una funciï¿½n que calcule el promedio de los elementos de una pila,
+// para ello hacer tambiï¿½n una funciï¿½n que calcule la suma, otra para la cuenta y otra que divida.
+// En total son cuatro funciones, y la funciï¿½n que calcula el promedio invoca a las otras 3.
 int elementosPila(Pila A);
 int sumaElementosPila(Pila A);
 float divicion(int A, int B);
 
 float promedioPila(Pila A);
 
-//10. Hacer una función que reciba una pila con números de un solo dígito (es responsabilidad de quien usa el programa) y que transforme esos dígitos en un número decimal. Por ejemplo, la pila: Debe retornar el número: 14675
+//10. Hacer una funciï¿½n que reciba una pila con nï¿½meros de un solo dï¿½gito (es responsabilidad de quien usa el programa) y que transforme esos dï¿½gitos en un nï¿½mero decimal. Por ejemplo, la pila: Debe retornar el nï¿½mero: 14675
 int pilaADecimal (Pila* A);
 
 
@@ -48,10 +48,10 @@ int pilaADecimal (Pila* A);
 
 
 
-//Ejercicios extra: Con el fin de generar una experiencia de usuario diferente a la que otorga la librería se requiere desarrollar las siguientes funciones:
+//Ejercicios extra: Con el fin de generar una experiencia de usuario diferente a la que otorga la librerï¿½a se requiere desarrollar las siguientes funciones:
 
-//Realizar una función que cargue la pila sin utilizar la función leer.
-//Realizar una función que muestre la pila sin utilizar la función mostrar.
+//Realizar una funciï¿½n que cargue la pila sin utilizar la funciï¿½n leer.
+//Realizar una funciï¿½n que muestre la pila sin utilizar la funciï¿½n mostrar.
 
 
 
@@ -62,9 +62,14 @@ int main()
     int caso,numMenor,numerito,i;
     float PromedioDeLaPila;
 
-    Pila a, b, aux,menor,ordenada,ordenadaNueva;
+    Pila a;
+    Pila b;
+    Pila aux;
+    Pila menor;
+    Pila ordenada;
+    Pila ordenadaNueva;
 
-    inicpila (&a);
+    inicpila(&a);
     inicpila(&b);
     inicpila(&aux);
     inicpila(&menor);
@@ -83,7 +88,7 @@ int main()
             mostrar (&a);
             break;
         case 2:
-            printf("función que pase todos los elementos de una pila a otra. \n");
+            printf("funciï¿½n que pase todos los elementos de una pila a otra. \n");
 
             apilar(&a,1);
             apilar(&a,2);
@@ -108,7 +113,7 @@ int main()
             apilar(&a,2);
             apilar(&a,3);
 
-            printf("función que pase todos los elementos de una pila a otra, pero conservando el orden.\n");
+            printf("funciï¿½n que pase todos los elementos de una pila a otra, pero conservando el orden.\n");
 
             printf("datos de la pila 1\n");
 
@@ -121,7 +126,7 @@ int main()
             mostrar(&b);
             break;
         case 4:
-            printf(" función que encuentre el menor elemento de una pila y lo retorna. La misma debe eliminar ese dato de la pila\n");
+            printf(" funciï¿½n que encuentre el menor elemento de una pila y lo retorna. La misma debe eliminar ese dato de la pila\n");
 
             apilar(&a,4);
             apilar(&a,2);
@@ -158,7 +163,7 @@ int main()
 
         case 5:
 
-            printf(" función que pase los elementos de una pila a otra, de manera que se genere una nueva pila ordenada.\n");
+            printf(" funciï¿½n que pase los elementos de una pila a otra, de manera que se genere una nueva pila ordenada.\n");
 
 
 
@@ -194,7 +199,7 @@ int main()
 
         case 6:
 
-            printf("Hacer una función que inserta en una pila ordenada de menor a mayor un nuevo elemento, conservando el orden de ésta.\n");
+            printf("Hacer una funciï¿½n que inserta en una pila ordenada de menor a mayor un nuevo elemento, conservando el orden de ï¿½sta.\n");
 
             numerito=5;
 
@@ -224,7 +229,7 @@ int main()
 
         case 7:
 
-            printf("Hacer una función que pase los elementos de una pila a otra, de manera que se genere una nueva pila ordenada.\n");
+            printf("Hacer una funciï¿½n que pase los elementos de una pila a otra, de manera que se genere una nueva pila ordenada.\n");
 
             apilar(&a,1);
             apilar(&a,2);
@@ -241,7 +246,7 @@ int main()
             mostrar(&a);
             break;
         case 8:
-            printf("función que sume los dos primeros elementos de una pila (tope y anterior), y retorne la suma,  sin alterar el contenido de la pila");
+            printf("funciï¿½n que sume los dos primeros elementos de una pila (tope y anterior), y retorne la suma,  sin alterar el contenido de la pila");
             apilar(&a,1);
             apilar(&a,2);
             apilar(&a,3);
@@ -268,6 +273,21 @@ int main()
             printf("el promedio de la pila es :%.2f\n",PromedioDeLaPila);
             break;
         case 10:
+            printf("pila a numero decimal.\n");
+            apilar(&a,1);
+            apilar(&a,2);
+            apilar(&a,3);
+            apilar(&a,4);
+                apilar(&a,1);
+            apilar(&a,2);
+            apilar(&a,3);
+            apilar(&a,4);
+
+            // pasarPila(&a,&b);
+
+            // mostrar(&b);
+            numerito= pilaADecimal(&a);
+            printf("la pila pasada a numero decimal es: %i.",numerito);
 
             break;
         default:
@@ -459,13 +479,7 @@ void insertarEnPilaOrdenada (Pila* A,int dato)
 {
 
     Pila aux;
-
     inicpila(&aux);
-
-
-
-
-
 
 
     while((!pilavacia(A))&&(tope(A)>dato))
@@ -557,16 +571,20 @@ float promedioPila(Pila A)
 
     return total;
 }
-
+//10
 int pilaADecimal (Pila* A)
 {
     int numDecimal;
+    int exponencial=1;
+    int i=0;
 
+
+    numDecimal=desapilar(A);
 
     while(!pilavacia(A))
     {
-
-
+        exponencial*=10;
+        numDecimal+=desapilar(A)*exponencial;
     }
 
     return numDecimal;
